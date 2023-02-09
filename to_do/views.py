@@ -6,11 +6,13 @@ from django.db.models import Count
 
 
 class BoardCreateApi(generics.CreateAPIView):
+    """ Creation a new board """
     serializer_class = BoardSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
 
 
 class BoardListApi(generics.ListAPIView):
+    """ Board list with names and count_todos only """
     serializer_class = BoardListSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
 
@@ -18,7 +20,10 @@ class BoardListApi(generics.ListAPIView):
         return Board.objects.all().annotate(count_todos=Count('todos'))
 
 
-class BoardDetailApi(generics.RetrieveAPIView):
+class BoardDetailRUDApi(generics.RetrieveUpdateDestroyAPIView):
+    """  """
     serializer_class = BoardSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     queryset = Board.objects.all()
+
+
