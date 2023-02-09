@@ -21,9 +21,30 @@ class BoardListApi(generics.ListAPIView):
 
 
 class BoardDetailRUDApi(generics.RetrieveUpdateDestroyAPIView):
-    """  """
+    """ CUD for board and detail view """
     serializer_class = BoardSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
     queryset = Board.objects.all()
 
+
+class TodoCreateApi(generics.CreateAPIView):
+    """ Create new To_do """
+    serializer_class = TodoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+
+
+class TodoUnCompletedApi(generics.ListAPIView):
+    """ Show uncomleted to_do """
+    serializer_class = TodoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+
+    def get_queryset(self):
+        return Todo.objects.filter(done=False)
+
+
+class TodoRUDApi(generics.RetrieveUpdateDestroyAPIView):
+    """ RUD To_do and detail view """
+    serializer_class = TodoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    queryset = Todo.objects.all()
 
