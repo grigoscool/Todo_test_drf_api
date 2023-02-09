@@ -10,7 +10,7 @@ class TodoSerializer(serializers.ModelSerializer):
 
 
 class BoardSerializer(serializers.ModelSerializer):
-
+    todos = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Board
         fields = '__all__'

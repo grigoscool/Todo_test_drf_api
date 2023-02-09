@@ -4,6 +4,7 @@ from .models import Board, Todo
 from .serialiers import BoardSerializer, BoardListSerializer, TodoSerializer
 from django.db.models import Count
 
+
 class BoardCreateApi(generics.CreateAPIView):
     serializer_class = BoardSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
@@ -15,3 +16,9 @@ class BoardListApi(generics.ListAPIView):
 
     def get_queryset(self):
         return Board.objects.all().annotate(count_todos=Count('todos'))
+
+
+class BoardDetailApi(generics.RetrieveAPIView):
+    serializer_class = BoardSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
+    queryset = Board.objects.all()
