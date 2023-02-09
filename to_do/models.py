@@ -16,6 +16,5 @@ class Board(models.Model):
     name = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     todos = models.ManyToManyField(Todo)
-
     def __str__(self):
         return self.name
