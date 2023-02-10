@@ -2,7 +2,7 @@ from django.views import generic
 
 from .forms import MailForm
 from .models import Mail
-from .servises import send
+from .task import send_spam
 
 
 class SendMail(generic.CreateView):
@@ -13,5 +13,5 @@ class SendMail(generic.CreateView):
 
     def form_valid(self, form):
         form.save()
-        send(form.instance.email)
+        send_spam.delay(form.instance.email)
         return super().form_valid(form)
