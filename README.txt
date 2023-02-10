@@ -1,7 +1,9 @@
 Backend Assignment: Simple Todos and Reminder API
 
 The assignment involves the creation of a TODO and Reminder REST JSON API using Django.
-Create a CRUD API for a simple TODO Management application. TODOs are organized in boards, on every board there can be multiple TODOs. A TODO contains a title (str), done (bool), a created (datetime) and updated (datetime) timestamp. A board has a name (str).
+Create a CRUD API for a simple TODO Management application. TODOs are organized in boards, on every board there can be
+multiple TODOs. A TODO contains a title (str), done (bool), a created (datetime) and updated (datetime) timestamp.
+A board has a name (str).
 
 Via a REST API it must be possible to:
 •	List all boards
@@ -23,7 +25,8 @@ Constraints
 
 Reminder API
 
-Another endpoint should allow the user to set reminders. A reminder contains an email address, a reminder text and a delay in minutes when it will be triggered.
+Another endpoint should allow the user to set reminders. A reminder contains an email address, a reminder text and a
+delay in minutes when it will be triggered.
 
 Via the REST API it must be possible to:
 

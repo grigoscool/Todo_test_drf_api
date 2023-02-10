@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import Mail
+from .models import Reminder
 
 
-class MailForm(forms.ModelForm):
-    class Meta:
-        model = Mail
-        fields = '__all__'
+# class MailForm(forms.ModelForm):
+#     class Meta:
+#         model = Reminder
+#         fields = '__all__'

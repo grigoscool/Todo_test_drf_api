@@ -5,6 +5,7 @@ from .serialiers import BoardSerializer, BoardListSerializer, TodoSerializer
 from django.db.models import Count
 from .permissions import IsOwnerOrAdmin
 
+
 class BoardCreateApi(generics.CreateAPIView):
     """ Creation a new board """
     serializer_class = BoardSerializer
@@ -47,4 +48,3 @@ class TodoRUDApi(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrAdmin, ]
     queryset = Todo.objects.all()
-
