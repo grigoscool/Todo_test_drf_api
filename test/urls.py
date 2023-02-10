@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include('to_do.urls', namespace='to_do')),
+    path('', include('send_mail.urls', namespace='send')),
 ]

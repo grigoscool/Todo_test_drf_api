@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     # my apps
     'to_do.apps.ToDoConfig',
+    'send_mail',
 ]
 
 MIDDLEWARE = [
@@ -112,3 +113,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+
+DEFAULT_FROM_EMAIL = 'grigoscool@mail.ru'
+SERVER_EMAIL = 'grigoscool@mail.ru'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST_USER = 'grigoscool@mail.ru'
+EMAIL_HOST_PASSWORD = 'fH2Q03FbT3pJjYsgtuc3'
+EMAIL_PORT = 25
