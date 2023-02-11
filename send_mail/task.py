@@ -1,13 +1,10 @@
-from django.core.mail import send_mail
 from test.celery import app
 from .servises import send
-from .models import Reminder
 
 
 @app.task
 def remind_mail(user_email, text):
     send(user_email, text)
-
 
 # @app.task
 # def send_beat_remind():

@@ -1,4 +1,3 @@
-from django.views import generic
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,7 +10,9 @@ from .task import remind_mail
 class ReminderCreateAPI(APIView):
     """
      View to create reminder api and send mail after delay minutes
+     * permission only for auth user
     """
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def post(self, request):
         serializer = ReminderSerializer(data=request.data)
@@ -25,14 +26,20 @@ class ReminderCreateAPI(APIView):
 
 
 class ReminderListApi(generics.ListAPIView):
-    """ View to show list of all reminders """
+    """
+    View to show list of all reminders
+    * permission only for auth user
+    """
     queryset = Reminder.objects.all()
     serializer_class = ReminderSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, ]
 
 
 class ReminderRUD(generics.RetrieveUpdateDestroyAPIView):
-    """ View to CUD current remind """
+    """
+    View to CUD current remind
+    * permission only for admin
+    """
     queryset = Reminder.objects.all()
     serializer_class = ReminderSerializer
     permission_classes = [permissions.IsAdminUser, ]
