@@ -8,9 +8,9 @@ app = Celery('test')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
-app.conf.beat_schedule = {
-    'send-spam-5-min': {
-        'task': 'send_mail.task.send_beats_spam',
-        'schedule': crontab(minute='*/1'),
-    },
-}
+# app.conf.beat_schedule = {
+#     'remind-mail': {
+#         'task': 'send_mail.task.send_beat_remind',
+#         'schedule': crontab(minute='*/1'),
+#     },
+# }
